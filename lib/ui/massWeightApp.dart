@@ -25,16 +25,20 @@ class _MassWeightState extends State<MassWeight> {
   final TextEditingController _textEditingController =
       new TextEditingController();
   double _finalResult =0.0;
+  var _selectedPlanet ="_planetName";
 
   void radioValueChangeHandle(int value) {
     setState(() {
       radioValue = value;
       switch (radioValue) {
         case 0: _finalResult = weightCalculator(_textEditingController.text, 0.06 );
+        _selectedPlanet ="Pluto";
         break;
         case 1: _finalResult = weightCalculator(_textEditingController.text, 0.38 );
+        _selectedPlanet ="Mars";
         break;
         case 2: _finalResult = weightCalculator(_textEditingController.text, 0.91 );
+        _selectedPlanet ="Venus";
         break;
       }
     });
@@ -133,7 +137,7 @@ class _MassWeightState extends State<MassWeight> {
               child: Column(
                 children: <Widget>[
                   Text(
-                    "You are  $_finalResult  weight",
+                    "You are  $_finalResult  weight on $_selectedPlanet",
                     style: TextStyle(color: Colors.white),
                   ),
 //                  Container(
